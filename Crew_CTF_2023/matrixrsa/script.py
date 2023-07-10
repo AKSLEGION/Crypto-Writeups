@@ -5,31 +5,34 @@ host=r'matrixrsa.chal.crewc.tf'
 port=20001
 
 while True:
-	r=remote(host,port)
+	try:
+		r=remote(host,port)
 
-	print(r.recvline())
-	print(r.recvline())
-	print(r.recvline())
-	encflag_0=int(r.recvline().decode().strip(),16)
-	encflag_1=int(r.recvline().decode().strip(),16)
-	print(f"encflag_0 : {encflag_0}")
-	print(f"encflag_1 : {encflag_1}")
+		print(r.recvline())
+		print(r.recvline())
+		print(r.recvline())
+		encflag_0=int(r.recvline().decode().strip(),16)
+		encflag_1=int(r.recvline().decode().strip(),16)
+		print(f"encflag_0 : {encflag_0}")
+		print(f"encflag_1 : {encflag_1}")
 
-	print(r.recvline())
-	enc_0=encflag_0
-	enc_1=encflag_1*2
-	payload_0=hex(enc_0)[2:].encode()
-	payload_1=hex(enc_1)[2:].encode()
-	r.sendline(payload_0)
-	r.sendline(payload_1)
+		print(r.recvline())
+		enc_0=encflag_0
+		enc_1=encflag_1*2
+		payload_0=hex(enc_0)[2:].encode()
+		payload_1=hex(enc_1)[2:].encode()
+		r.sendline(payload_0)
+		r.sendline(payload_1)
 
-	feedback=r.recvline().decode().strip()
-	print(feedback)
-	if("size error" in feedback):
-		r.close()
+		feedback=r.recvline().decode().strip()
+		print(feedback)
+		if("size error" in feedback):
+			r.close()
+			continue
+		else:
+			break
+	except:
 		continue
-	else:
-		break
 
 msgintx2=int(r.recvline().decode().strip(),16)
 print(f"msgintx2 : {msgintx2}")
