@@ -29,16 +29,15 @@ while True:
 			left,right=map(int,l_r.split(', '))
 			print(left,right)
 
-			b = -1*find_b(left,right)
+			b = find_b(left,right)
 			P = 9*(b**4)
-			Q=3*b-9*(b**4)
-			R=1-9*(b**3)
+			Q=-3*b-9*(b**4)
+			R=1+9*(b**3)
 
 			s=str(P)+','+str(Q)+','+str(R)
 			print(s)
 			r.sendline(s.encode())
 			print(r.recvline())
 	except:
+		r.close()
 		break
-		
-r.close()
