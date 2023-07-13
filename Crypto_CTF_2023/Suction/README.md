@@ -159,4 +159,4 @@ for i in range(2**8):
 
 ## Flag
 
-The flag is CCTF{6oRYGy&Dc$G2ZS}
+The flag is `CCTF{6oRYGy&Dc$G2ZS}`
