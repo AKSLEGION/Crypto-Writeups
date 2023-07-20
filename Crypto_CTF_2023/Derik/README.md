@@ -79,4 +79,4 @@ print("The flag is "+ bytes.fromhex(hex(m)[2:]).decode())
 
 ## Flag
 
-The flag is CCTF{____Sylvester____tHE0r3m_Of_D3r!va7i0n!}
+The flag is `CCTF{____Sylvester____tHE0r3m_Of_D3r!va7i0n!}`
