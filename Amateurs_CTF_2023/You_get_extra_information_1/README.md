@@ -2,7 +2,7 @@
 
 ## Source
 
-![Source jpg](source.jpg)
+![Source png](source.png)
 
 ## Encrypt
 
@@ -28,7 +28,7 @@ with open('output.txt', 'w') as f:
 
 ## Decrypt
 
-- We have `n = p*q` and `extra_information = p + 2*q` , so we can get `(p - 2*q)^2^ = (p + 2*q)^2^ - 8*p*q`
+- We have `n = p*q` and `extra_information = p + 2*q` , so we can get `(p - 2*q)^2 = (p + 2*q)^2 - 8*p*q`
 
 ```
 from Crypto.Util.number import *
