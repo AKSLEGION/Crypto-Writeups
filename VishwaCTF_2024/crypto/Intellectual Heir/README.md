@@ -22,7 +22,7 @@ VishwaCTF{safe's combination}
 ## Encryption
 
 - Understanding the [Intellectual Heir.py](Intellectual%20Heir.py) file
-```
+```py
 # my secret to hide the combination of my safe in fornt of all without anyone getting a clue what it is ;)
 
 #some boring python function for conversion nothing new
@@ -40,7 +40,7 @@ msg = int(result)
 - This function creates a `ass_str` string with the ascii values of the characters from the `input` string by concatenating.
 - Then this function is applied on the `input` string which is the flag and the `result` string is convert into integer.
 
-```
+```py
 #not that easy, you figure out yourself what the freck is a & z
 a = 
 z = 
@@ -58,7 +58,7 @@ print(str(encrypted))
     - `e` is the exponent which is usually `65537`
     - `encrypted` is the RSA encryption of `m` with `e` and `f`
 
-```
+```py
 #bamm!! protection for primes
 number = 
 bin = bin(number)[2:]
@@ -77,7 +77,7 @@ np.savetxt("file2", result)
 [solve.py](solve.py)
 
 ### Explanation
-```
+```py
 cos = open("file1.txt",'r').read().strip().split('\n')
 a = int(''.join(['0' if val[0]=='1' else '1' for val in cos]),2)
 
@@ -93,7 +93,7 @@ assert sympy.isprime(a)
 - Then we join the bits and convert it to integer to get `a` and `z`.
 - Then we check that `a` and `z` are both primes
 
-```
+```py
 f = a*z
 e = 65537
 
@@ -104,7 +104,7 @@ m = pow(c,d,f)
 ```
 - Then we read `c` from [file.txt](file.txt) and decrypt the standard RSA
 
-```
+```py
 ass_msg = str(m)
 msg = ''.join([chr(int(asc)) for asc in [ass_msg[i:i+2] for i in range(0,len(ass_msg),2)]])
 print(msg)

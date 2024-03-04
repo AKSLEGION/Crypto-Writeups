@@ -13,7 +13,7 @@
 ## Encryption
 
 - Understanding the [challenge.py](challenge.py) file
-```
+```py
 import numpy as np
 import random
 
@@ -46,7 +46,7 @@ def generate_random_number_again():
 
 - On erasing impossible cases, `transform(i)` returns `i` in the end.
 
-```
+```py
 def encrypt(p,key):
     return ''.join(chr(p(transform(i))) for i in key)
 
@@ -70,7 +70,7 @@ print(enc)
 - The characters in [encoded_key.txt](encoded_key.txt) had huge ascii values so I assumed those were encoded using this polynomial.
 - If i read them as bytes, they would break into bytes of size 8 bits so i read then as a string and reversed the encoding.
 
-```
+```py
 rev = dict()
 for i in range(256):
     rev[4*i**2+3*i+7] = i
@@ -85,7 +85,7 @@ print(key)
 - The content in [encoded_flag.txt](encoded_flag.txt) was clearly base64 encoded, which on decoding returned a 48 byte long bytestring.
 - 16 byte multiplicity was there so I decrypted the base64 decoded content of [encoded_flag.txt](encoded_flag.txt) using the `key` in `AES`.
 
-```
+```py
 enc_flag = open('encoded_flag.txt','rb').read()
 
 import base64

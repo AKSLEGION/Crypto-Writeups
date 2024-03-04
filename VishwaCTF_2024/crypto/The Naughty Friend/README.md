@@ -42,7 +42,7 @@ YEK EHT FO STRAP "tnatropmI tsoM eht era dnE dna gninnigeB ehT"
 - So I took the `base64 encoded ciphertext` and the `Key` and tried to apply `double Blowfish decryption` on them as provided in the Code, which didn't work
 - As the `IV` was generated randomly in the Code provided and there was no way to get its value, I simply changed the mode of encryption from `CBC to ECB` and got rid of the `IV`, in hopes that I will xor the rest of the data later if the first block comes back right.
 - It gave me the entire decrypted data in `ECB Mode`. So, I guess that was also something to fix in the broken code.
-```
+```java
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
@@ -86,7 +86,7 @@ Encrypted Text: This is the final hint, the answer to this encrption starts with
 - The Explanation says that the answer starts with `Vml`, so the `XorKey` will be `ascii value of 'm' ^ ascii value of 'V'`
 - Then we simply apply the Xor Key to the entire string.
 
-```
+```py
 ct = b'mVWAZs_Sj\ni|^\nyzX\x08u\x08vsq~c\nqWulmnali]qsmQb\tmAaUnCvcW\x02'
 key = 59
 pt = b''.join([(byte ^ key).to_bytes(1,'big') for byte in ct])
@@ -95,7 +95,7 @@ print(pt)
 
 - The resulting `pt` seemed like a `base64` encoded data so we decoded it to get the `flag`.
 
-```
+```py
 import base64
 flag = base64.b64decode(pt)
 print(flag.decode())
